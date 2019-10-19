@@ -1,9 +1,36 @@
 import React from "react"
 import { Link } from "gatsby"
+import { Global, css } from "@emotion/core"
 
 import { rhythm, scale } from "../utils/typography"
 
-const Header = () => <header>This is the header</header>
+export const globalStyles = css`
+  body {
+    background-color: #fafafa;
+  }
+`
+
+const Header = () => (
+  <header>
+    <nav>
+      <div className="brand">
+        <a href="/">alioukahere.dev</a>
+      </div>
+
+      <ul>
+        <li>
+          <a href="#">blog</a>
+        </li>
+        <li>
+          <a href="#">projects</a>
+        </li>
+        <li>
+          <a href="#">contact</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+)
 
 const Footer = () => (
   <footer>
@@ -69,6 +96,7 @@ export default ({ children }) => (
   //   padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
   // }}
   >
+    <Global styles={globalStyles} />
     <Header></Header>
 
     <main>{children}</main>

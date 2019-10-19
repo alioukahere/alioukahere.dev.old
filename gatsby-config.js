@@ -3,7 +3,7 @@ module.exports = {
     title: `Mamadou Aliou Diallo - Full Stack Web Developer`,
     author: `alioukahere`,
     description: `I'm Mamadou Aliou Diallo, a freelance full stack web developer passionate about entrepreneurship and clean code.`,
-    siteUrl: `https://alioukahere.netlify.com/`,
+    siteUrl: `https://alioukahere.dev/`,
     social: {
       twitter: `alioukahere`,
     },
