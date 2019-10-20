@@ -31,5 +31,6 @@ module.exports = {
   twitterHandle: "@alioukahere",
   github: "https://github.com/alioukahere/",
   linkedin: "https://www.linkedin.com/in/alioukahere/",
+  instagram: "https://www.instagram.com/alioukahere/",
   youtube: "https://www.youtube.com/channel/UCz-BYvuntVRt_VpfR6FKXJw",
 }

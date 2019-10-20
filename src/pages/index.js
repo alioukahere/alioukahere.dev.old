@@ -7,7 +7,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
 import Container from "../components/container"
-import { Twitter, Github, Linkedin } from "../components/social"
+import { Twitter, Github, Linkedin, Instagram } from "../components/social"
 
 function Index(props) {
   const { data } = props
@@ -90,6 +90,9 @@ function Index(props) {
               </li>
               <li>
                 <Linkedin />
+              </li>
+              <li>
+                <Instagram />
               </li>
             </ul>
           </p>

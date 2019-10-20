@@ -126,12 +126,12 @@ export default ({ children }) => {
               }
             `}
           >
-            <li>
+            {/* <li>
               <Link to="/blog">blog</Link>
             </li>
             <li>
               <Link to="/">projects</Link>
-            </li>
+            </li> */}
             <li>
               <a href="mailto:hello@alioukahere.dev">contact</a>
             </li>
