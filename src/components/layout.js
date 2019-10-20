@@ -4,6 +4,7 @@ import { Global, css } from "@emotion/core"
 
 import { rhythm, scale } from "../utils/typography"
 import Container from "./container"
+import { fonts } from "../utils/typography"
 
 export default ({ children }) => {
   // const { location, title, children } = this.props
@@ -77,6 +78,7 @@ export default ({ children }) => {
         height: 80px;
         line-height: 80px;
         align-items: center;
+        font-family: ${fonts.firaMonoBold};
       `}
     >
       <Container>
@@ -87,8 +89,16 @@ export default ({ children }) => {
             align-items: center;
           `}
         >
-          <div className="brand">
-            <a href="/">alioukahere.dev</a>
+          <div>
+            <Link
+              to={`/`}
+              css={css`
+                color: #0f0f0f;
+                font-size: 1.3rem;
+              `}
+            >
+              alioukahere.dev
+            </Link>
           </div>
 
           <ul
@@ -103,17 +113,22 @@ export default ({ children }) => {
                 &:not(:last-child) {
                   margin-right: 30px;
                 }
+
+                a {
+                  color: #0f0f0f;
+                  text-transform: uppercase;
+                }
               }
             `}
           >
             <li>
-              <a href="#">blog</a>
+              <Link to="/">blog</Link>
             </li>
             <li>
-              <a href="#">projects</a>
+              <Link to="/">projects</Link>
             </li>
             <li>
-              <a href="#">contact</a>
+              <Link to="/">contact</Link>
             </li>
           </ul>
         </nav>
