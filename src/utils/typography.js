@@ -37,7 +37,7 @@ const typography = new Typography({
     },
     "h1,h2,h3,h4": {
       lineHeight: 1.25,
-      marginTop: rhythm(1),
+      marginTop: rhythm(0.8),
       marginBottom: rhythm(1 / 2),
       letterSpacing: "-0.04rem",
     },

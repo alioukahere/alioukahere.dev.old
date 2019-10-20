@@ -94,7 +94,7 @@ export default ({ children }) => {
               to={`/`}
               css={css`
                 color: #0f0f0f;
-                font-size: 1.3rem;
+                font-size: 1.4rem;
               `}
             >
               alioukahere.dev
@@ -117,18 +117,23 @@ export default ({ children }) => {
                 a {
                   color: #0f0f0f;
                   text-transform: uppercase;
+                  font-size: 0.9rem;
+
+                  &:hover {
+                    text-decoration: underline;
+                  }
                 }
               }
             `}
           >
             <li>
-              <Link to="/">blog</Link>
+              <Link to="/blog">blog</Link>
             </li>
             <li>
               <Link to="/">projects</Link>
             </li>
             <li>
-              <Link to="/">contact</Link>
+              <a href="mailto:hello@alioukahere.dev">contact</a>
             </li>
           </ul>
         </nav>
@@ -137,10 +142,28 @@ export default ({ children }) => {
   )
 
   const Footer = () => (
-    <footer>
+    <footer
+      css={css`
+        text-align: center;
+        position: absolute;
+        bottom: 20px;
+        width: 100%;
+
+        a {
+          color: #0f0f0f;
+          text-decoration: underline;
+        }
+      `}
+    >
+      <div>
+        <a href="mailto:hello@alioukahere.dev">hello@alioukahere.dev</a>
+      </div>
       © {new Date().getFullYear()}, Built with
       {` `}
-      <a href="https://www.gatsbyjs.org">Gatsby</a>
+      <a href="https://www.gatsbyjs.org" target="_blank">
+        Gatsby
+      </a>
+      .
     </footer>
   )
 
@@ -156,7 +179,15 @@ export default ({ children }) => {
       <Global styles={globalStyles} />
       <Header></Header>
 
-      <main>{children}</main>
+      <main
+        css={css`
+          min-height: 70vh;
+          display: flex;
+          align-items: center;
+        `}
+      >
+        {children}
+      </main>
 
       <Footer></Footer>
     </div>

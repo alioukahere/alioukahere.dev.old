@@ -11,6 +11,7 @@ const Container = props => {
         max-width: ${maxWidth}px;
         margin: 0 auto;
         background-color: transparent;
+        text-align: ${props.centerAlign ? "center" : "left"};
       `}
       {...restProps}
     >

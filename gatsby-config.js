@@ -5,7 +5,7 @@ module.exports = {
     description: `I'm Mamadou Aliou Diallo, a freelance full stack web developer passionate about entrepreneurship and clean code.`,
     siteUrl: `https://alioukahere.dev/`,
     social: {
-      twitter: `alioukahere`,
+      username: `alioukahere`,
     },
   },
   plugins: [
