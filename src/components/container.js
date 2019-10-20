@@ -9,6 +9,7 @@ const Container = props => {
       css={css`
         width: 100%;
         max-width: ${maxWidth}px;
+        padding: 0 10px;
         margin: 0 auto;
         background-color: transparent;
         text-align: ${props.centerAlign ? "center" : "left"};
