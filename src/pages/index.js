@@ -18,13 +18,13 @@ function Index(props) {
     <Layout>
       <SEO title="Mamadou Aliou Diallo - Full Stack Web Developer" />
 
-      <Container centerAlign="true">
+      <Container center="true">
         <div>
           <img
             src="https://www.kaherecode.com/uploads/users/5c52e73b634bd.png"
             alt="Mamadou Aliou Diallo"
             css={css`
-              width: 200px;
+              width: 150px;
               border-radius: 50%;
             `}
           />
@@ -34,6 +34,11 @@ function Index(props) {
               font-size: 1.4rem;
               margin-top: -10px;
               margin-bottom: 20px;
+              line-height: 1.8rem;
+
+              @media screen and (max-width: 1000px) {
+                font-size: 1.2rem;
+              }
             `}
           >
             Mamadou Aliou Diallo - Full Stack Web Developer
@@ -50,6 +55,16 @@ function Index(props) {
                 color: #000;
                 text-decoration: underline;
               }
+
+              @media screen and (max-width: 1000px) {
+                width: 100%;
+                font-size: 0.9rem;
+                line-height: 1.5rem;
+              }
+
+              @media screen and (max-width: 700px) {
+                text-align: justify;
+              }
             `}
           >
             Hi, I'm Mamadou Aliou Diallo a.k.a <strong>alioukahere</strong>. A
@@ -65,7 +80,7 @@ function Index(props) {
             learn and share about programming.
           </p>
 
-          <p
+          <div
             css={css`
               margin-top: 30px;
             `}
@@ -95,7 +110,7 @@ function Index(props) {
                 <Instagram />
               </li>
             </ul>
-          </p>
+          </div>
         </div>
       </Container>
     </Layout>

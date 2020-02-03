@@ -95,6 +95,10 @@ export default ({ children }) => {
               css={css`
                 color: #0f0f0f;
                 font-size: 1.4rem;
+
+                @media screen and (max-width: 800px) {
+                  font-size: 1.1rem;
+                }
               `}
             >
               alioukahere.dev
@@ -145,13 +149,17 @@ export default ({ children }) => {
     <footer
       css={css`
         text-align: center;
-        position: absolute;
+        position: relative;
         bottom: 20px;
         width: 100%;
 
         a {
           color: #0f0f0f;
           text-decoration: underline;
+        }
+
+        @media screen and (max-width: 1000px) {
+          font-size: 0.9rem;
         }
       `}
     >
@@ -181,9 +189,10 @@ export default ({ children }) => {
 
       <main
         css={css`
-          min-height: 70vh;
+          min-height: 83vh;
           display: flex;
           align-items: center;
+          padding-top: 30px;
         `}
       >
         {children}
