@@ -57,12 +57,14 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `alioukahere.dev`,
-        short_name: `alioukahere.dev`,
+        name: `alioukahere`,
+        short_name: `alioukahere`,
+        description: `Mamadou Aliou Diallo - Full Stack Web Developer`,
+        lang: `en`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#00008b`,
-        display: `minimal-ui`,
+        display: `standalone`,
         icon: `content/assets/icon.png`,
       },
     },
