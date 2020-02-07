@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { Link } from "gatsby"
 import { Global, css } from "@emotion/core"
 
@@ -71,79 +71,153 @@ export default ({ children }) => {
     }
   `
 
-  const Header = () => (
-    <header
-      css={css`
-        display: flex;
-        height: 80px;
-        line-height: 80px;
-        align-items: center;
-        font-family: ${fonts.firaMonoBold};
-      `}
-    >
-      <Container>
-        <nav
-          css={css`
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-          `}
-        >
-          <div>
-            <Link
-              to={`/`}
-              css={css`
-                color: #0f0f0f;
-                font-size: 1.4rem;
+  const Header = () => {
+    const [mobile, setMobile] = useState(false)
 
-                @media screen and (max-width: 800px) {
-                  font-size: 1.1rem;
+    const toggleMobileMenu = () => setMobile(true)
+
+    return (
+      <header
+        css={css`
+          display: flex;
+          height: 80px;
+          line-height: 80px;
+          align-items: center;
+          font-family: ${fonts.firaMonoBold};
+        `}
+      >
+        <Container>
+          <nav
+            css={css`
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            `}
+          >
+            <div>
+              <Link
+                to={`/`}
+                css={css`
+                  color: #0f0f0f;
+                  font-size: 1.4rem;
+
+                  @media screen and (max-width: 800px) {
+                    font-size: 1.1rem;
+                  }
+                `}
+              >
+                alioukahere.dev
+              </Link>
+            </div>
+
+            <ul
+              css={css`
+                padding: 0;
+                margin: 0;
+                height: 80px;
+
+                & li {
+                  display: inline-block;
+
+                  &:not(:last-child) {
+                    margin-right: 30px;
+                  }
+
+                  a {
+                    color: #0f0f0f;
+                    text-transform: lowercase;
+                    font-size: 1rem;
+
+                    &:hover {
+                      text-decoration: underline;
+                    }
+                  }
+                }
+
+                @media screen and (max-width: 600px) {
+                  display: none;
                 }
               `}
             >
-              alioukahere.dev
-            </Link>
-          </div>
-
-          <ul
-            css={css`
-              padding: 0;
-              margin: 0;
-              height: 80px;
-
-              & li {
-                display: inline-block;
-
-                &:not(:last-child) {
-                  margin-right: 30px;
-                }
+              <li>
+                <Link to="/blog">blog</Link>
+              </li>
+              <li>
+                <Link to="/">projects</Link>
+              </li>
+              <li>
+                <a href="mailto:hello@alioukahere.dev">contact</a>
+              </li>
+            </ul>
+            <div
+              css={css`
+                padding: 0;
+                margin: 0;
+                height: 80px;
 
                 a {
                   color: #0f0f0f;
-                  text-transform: uppercase;
-                  font-size: 0.9rem;
+                  text-transform: lowercase;
+                  font-size: 1rem;
 
                   &:hover {
                     text-decoration: underline;
                   }
                 }
-              }
-            `}
-          >
-            {/* <li>
-              <Link to="/blog">blog</Link>
-            </li>
-            <li>
-              <Link to="/">projects</Link>
-            </li> */}
-            <li>
-              <a href="mailto:hello@alioukahere.dev">contact</a>
-            </li>
-          </ul>
-        </nav>
-      </Container>
-    </header>
-  )
+              `}
+            >
+              <a href="#">menu</a>
+
+              <ul
+                css={css`
+                  padding: 0;
+                  margin: 0;
+                  height: 60px;
+                  line-height: 60px;
+                  position: absolute;
+                  width: 100%;
+                  background-color: #0f0f0f;
+                  left: 0;
+                  right: 0;
+                  top: 60px;
+                  text-align: center;
+                  display: ${mobile ? "block" : "none"};
+
+                  & li {
+                    display: inline-block;
+
+                    &:not(:last-child) {
+                      margin-right: 30px;
+                    }
+
+                    a {
+                      color: #fafafa;
+                      text-transform: lowercase;
+                      font-size: 1rem;
+
+                      &:hover {
+                        text-decoration: underline;
+                      }
+                    }
+                  }
+                `}
+              >
+                <li>
+                  <Link to="/blog">blog</Link>
+                </li>
+                <li>
+                  <Link to="/">projects</Link>
+                </li>
+                <li>
+                  <a href="mailto:hello@alioukahere.dev">contact</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </Container>
+      </header>
+    )
+  }
 
   const Footer = () => (
     <footer
