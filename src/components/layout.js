@@ -8,6 +8,81 @@ import { fonts } from "../utils/typography"
 import MobileMenu from "./mobileMenu"
 import Menu from "./menu"
 
+const MobileContext = React.createContext(true)
+
+const Header = () => {
+  const device = useContext(MobileContext)
+
+  return (
+    <header
+      css={css`
+        display: flex;
+        height: 80px;
+        line-height: 80px;
+        align-items: center;
+        font-family: ${fonts.firaMonoBold};
+      `}
+    >
+      <Container>
+        <nav
+          css={css`
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          `}
+        >
+          <div>
+            <Link
+              to={`/`}
+              css={css`
+                color: #0f0f0f;
+                font-size: 1.4rem;
+
+                @media screen and (max-width: 800px) {
+                  font-size: 1.1rem;
+                }
+              `}
+            >
+              alioukahere.dev
+            </Link>
+          </div>
+          {device === "desktop" ? <Menu /> : <MobileMenu />}
+        </nav>
+      </Container>
+    </header>
+  )
+}
+
+const Footer = () => (
+  <footer
+    css={css`
+      text-align: center;
+      position: relative;
+      bottom: 20px;
+      width: 100%;
+
+      a {
+        color: #0f0f0f;
+        text-decoration: underline;
+      }
+
+      @media screen and (max-width: 1000px) {
+        font-size: 0.9rem;
+      }
+    `}
+  >
+    <div>
+      <a href="mailto:hello@alioukahere.dev">hello@alioukahere.dev</a>
+    </div>
+    © {new Date().getFullYear()}, Built with
+    {` `}
+    <a href="https://www.gatsbyjs.org" target="_blank">
+      Gatsby
+    </a>
+    .
+  </footer>
+)
+
 export default ({ children }) => {
   // const { location, title, children } = this.props
   // const rootPath = `${__PATH_PREFIX__}/`
@@ -73,10 +148,13 @@ export default ({ children }) => {
     }
   `
 
-  const MobileContext = React.createContext(true)
+  let defaultWidth
+  if (typeof window !== "undefined") {
+    defaultWidth = window.innerWidth
+  }
 
   const useWindowWidth = () => {
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+    const [windowWidth, setWindowWidth] = useState(defaultWidth)
 
     useEffect(() => {
       function handleResize() {
@@ -89,79 +167,6 @@ export default ({ children }) => {
 
     return windowWidth
   }
-
-  const Header = () => {
-    const device = useContext(MobileContext)
-
-    return (
-      <header
-        css={css`
-          display: flex;
-          height: 80px;
-          line-height: 80px;
-          align-items: center;
-          font-family: ${fonts.firaMonoBold};
-        `}
-      >
-        <Container>
-          <nav
-            css={css`
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
-            `}
-          >
-            <div>
-              <Link
-                to={`/`}
-                css={css`
-                  color: #0f0f0f;
-                  font-size: 1.4rem;
-
-                  @media screen and (max-width: 800px) {
-                    font-size: 1.1rem;
-                  }
-                `}
-              >
-                alioukahere.dev
-              </Link>
-            </div>
-            {device === "desktop" ? <Menu /> : <MobileMenu />}
-          </nav>
-        </Container>
-      </header>
-    )
-  }
-
-  const Footer = () => (
-    <footer
-      css={css`
-        text-align: center;
-        position: relative;
-        bottom: 20px;
-        width: 100%;
-
-        a {
-          color: #0f0f0f;
-          text-decoration: underline;
-        }
-
-        @media screen and (max-width: 1000px) {
-          font-size: 0.9rem;
-        }
-      `}
-    >
-      <div>
-        <a href="mailto:hello@alioukahere.dev">hello@alioukahere.dev</a>
-      </div>
-      © {new Date().getFullYear()}, Built with
-      {` `}
-      <a href="https://www.gatsbyjs.org" target="_blank">
-        Gatsby
-      </a>
-      .
-    </footer>
-  )
 
   const value = useWindowWidth() > 600 ? "desktop" : "mobile"
 
