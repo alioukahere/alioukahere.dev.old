@@ -1,10 +1,12 @@
-import React, { useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { Link } from "gatsby"
 import { Global, css } from "@emotion/core"
 
 import { rhythm, scale } from "../utils/typography"
 import Container from "./container"
 import { fonts } from "../utils/typography"
+import MobileMenu from "./mobileMenu"
+import Menu from "./menu"
 
 export default ({ children }) => {
   // const { location, title, children } = this.props
@@ -71,10 +73,25 @@ export default ({ children }) => {
     }
   `
 
-  const Header = () => {
-    const [mobile, setMobile] = useState(false)
+  const MobileContext = React.createContext(true)
 
-    const toggleMobileMenu = () => setMobile(true)
+  const useWindowWidth = () => {
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+
+    useEffect(() => {
+      function handleResize() {
+        setWindowWidth(window.innerWidth)
+      }
+
+      window.addEventListener("resize", handleResize)
+      return () => window.removeEventListener("resize", handleResize)
+    }, [])
+
+    return windowWidth
+  }
+
+  const Header = () => {
+    const device = useContext(MobileContext)
 
     return (
       <header
@@ -109,110 +126,7 @@ export default ({ children }) => {
                 alioukahere.dev
               </Link>
             </div>
-
-            <ul
-              css={css`
-                padding: 0;
-                margin: 0;
-                height: 80px;
-
-                & li {
-                  display: inline-block;
-
-                  &:not(:last-child) {
-                    margin-right: 30px;
-                  }
-
-                  a {
-                    color: #0f0f0f;
-                    text-transform: lowercase;
-                    font-size: 1rem;
-
-                    &:hover {
-                      text-decoration: underline;
-                    }
-                  }
-                }
-
-                @media screen and (max-width: 600px) {
-                  display: none;
-                }
-              `}
-            >
-              <li>
-                <Link to="/blog">blog</Link>
-              </li>
-              <li>
-                <Link to="/">projects</Link>
-              </li>
-              <li>
-                <a href="mailto:hello@alioukahere.dev">contact</a>
-              </li>
-            </ul>
-            <div
-              css={css`
-                padding: 0;
-                margin: 0;
-                height: 80px;
-
-                a {
-                  color: #0f0f0f;
-                  text-transform: lowercase;
-                  font-size: 1rem;
-
-                  &:hover {
-                    text-decoration: underline;
-                  }
-                }
-              `}
-            >
-              <a href="#">menu</a>
-
-              <ul
-                css={css`
-                  padding: 0;
-                  margin: 0;
-                  height: 60px;
-                  line-height: 60px;
-                  position: absolute;
-                  width: 100%;
-                  background-color: #0f0f0f;
-                  left: 0;
-                  right: 0;
-                  top: 60px;
-                  text-align: center;
-                  display: ${mobile ? "block" : "none"};
-
-                  & li {
-                    display: inline-block;
-
-                    &:not(:last-child) {
-                      margin-right: 30px;
-                    }
-
-                    a {
-                      color: #fafafa;
-                      text-transform: lowercase;
-                      font-size: 1rem;
-
-                      &:hover {
-                        text-decoration: underline;
-                      }
-                    }
-                  }
-                `}
-              >
-                <li>
-                  <Link to="/blog">blog</Link>
-                </li>
-                <li>
-                  <Link to="/">projects</Link>
-                </li>
-                <li>
-                  <a href="mailto:hello@alioukahere.dev">contact</a>
-                </li>
-              </ul>
-            </div>
+            {device === "desktop" ? <Menu /> : <MobileMenu />}
           </nav>
         </Container>
       </header>
@@ -249,30 +163,34 @@ export default ({ children }) => {
     </footer>
   )
 
+  const value = useWindowWidth() > 600 ? "desktop" : "mobile"
+
   return (
-    <div
-    // style={{
-    //   marginLeft: `auto`,
-    //   marginRight: `auto`,
-    //   maxWidth: rhythm(24),
-    //   padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-    // }}
-    >
-      <Global styles={globalStyles} />
-      <Header></Header>
-
-      <main
-        css={css`
-          min-height: 83vh;
-          display: flex;
-          align-items: center;
-          padding-top: 30px;
-        `}
+    <MobileContext.Provider value={value}>
+      <div
+      // style={{
+      //   marginLeft: `auto`,
+      //   marginRight: `auto`,
+      //   maxWidth: rhythm(24),
+      //   padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
+      // }}
       >
-        {children}
-      </main>
+        <Global styles={globalStyles} />
+        <Header></Header>
 
-      <Footer></Footer>
-    </div>
+        <main
+          css={css`
+            min-height: 83vh;
+            display: flex;
+            align-items: center;
+            padding-top: 30px;
+          `}
+        >
+          {children}
+        </main>
+
+        <Footer></Footer>
+      </div>
+    </MobileContext.Provider>
   )
 }
