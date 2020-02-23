@@ -1,7 +1,5 @@
-import React from "react"
+import React, { useState } from "react"
 import { css } from "@emotion/core"
-import { Link } from "gatsby"
-import { useState } from "react"
 
 export default function MobileMenu() {
   const [mobile, setMobile] = useState(false)
@@ -74,12 +72,12 @@ export default function MobileMenu() {
           }
         `}
       >
-        <li>
+        {/* <li>
           <Link to="/blog">blog</Link>
         </li>
         <li>
           <Link to="/">projects</Link>
-        </li>
+        </li> */}
         <li>
           <a href="mailto:hello@alioukahere.dev">contact</a>
         </li>

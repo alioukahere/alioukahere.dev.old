@@ -1,5 +1,4 @@
 import React from "react"
-import { Link } from "gatsby"
 import { css } from "@emotion/core"
 
 export default function Menu() {
@@ -33,12 +32,12 @@ export default function Menu() {
         }
       `}
     >
-      <li>
+      {/* <li>
         <Link to="/blog">blog</Link>
       </li>
       <li>
         <Link to="/">projects</Link>
-      </li>
+      </li> */}
       <li>
         <a href="mailto:hello@alioukahere.dev">contact</a>
       </li>

@@ -5,7 +5,6 @@ import { css } from "@emotion/core"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { rhythm } from "../utils/typography"
 import Container from "../components/container"
 import { Twitter, Github, Linkedin, Instagram } from "../components/social"
 
