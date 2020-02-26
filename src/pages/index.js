@@ -76,7 +76,10 @@ function Index(props) {
               </a>
             </strong>
             , an aspiring community for french developers, a web platform to
-            learn and share about programming.
+            learn and share about programming. I'm available for freelance
+            projects or just discussing design and programming. Feel free to
+            ping me at{" "}
+            <a href="mailto:hello@alioukahere.dev">hello@alioukahere.dev</a>.
           </p>
 
           <div
