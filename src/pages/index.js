@@ -79,7 +79,10 @@ function Index(props) {
             learn and share about programming. I'm available for freelance
             projects or just discussing design and programming. Feel free to
             ping me at{" "}
-            <a href="mailto:hello@alioukahere.dev">hello@alioukahere.dev</a>.
+            <a href="mailto:aliou.diallo@kaherecode.com">
+              aliou.diallo@kaherecode.com
+            </a>
+            .
           </p>
 
           <div

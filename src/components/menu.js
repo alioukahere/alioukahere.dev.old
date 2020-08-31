@@ -39,7 +39,7 @@ export default function Menu() {
         <Link to="/">projects</Link>
       </li> */}
       <li>
-        <a href="mailto:hello@alioukahere.dev">contact</a>
+        <a href="mailto:aliou.diallo@kaherecode.com">contact</a>
       </li>
     </ul>
   )

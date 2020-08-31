@@ -71,7 +71,9 @@ const Footer = () => (
     `}
   >
     <div>
-      <a href="mailto:hello@alioukahere.dev">hello@alioukahere.dev</a>
+      <a href="mailto:aliou.diallo@kaherecode.com">
+        aliou.diallo@kaherecode.com
+      </a>
     </div>
     © {new Date().getFullYear()}, Built with
     {` `}
