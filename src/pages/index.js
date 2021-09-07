@@ -20,7 +20,7 @@ function Index(props) {
       <Container center="true">
         <div>
           <img
-            src="https://www.kaherecode.com/uploads/users/5c52e73b634bd.png"
+            src="https://res.cloudinary.com/kahere/image/upload/v1628074703/kaherecode/users/jea6ztmixjj7vud3gpgv.webp"
             alt="Mamadou Aliou Diallo"
             css={css`
               width: 150px;
